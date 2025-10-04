@@ -12,7 +12,7 @@ To use this repository, add the following lines to your `/etc/pacman.conf`:
 ```ini
 [bn-arch-repo]
 SigLevel = Optional TrustAll
-Server = https://BnSplits.github.io/bn-arch-repo/$arch
+Server = https://bnsplits.github.io/bn-arch-repo/$arch
 ````
 
 Then update the package databases:
