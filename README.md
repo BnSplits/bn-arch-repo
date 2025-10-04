@@ -1,6 +1,6 @@
 # Bn Arch Repository
 
-A personal Arch Linux repository maintained by **BnSplits**.  
+A personal Arch Linux repository maintained by **BnSplits** (AKA me).
 This repository provides modified versions of existing Arch packages, built to better fit specific use cases or workflows.
 
 ---
