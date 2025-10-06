@@ -1,5 +1,4 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
-
 pkgname=chromafade-git
 _pkgname=${pkgname%-git}
 pkgver=r5.1775223
