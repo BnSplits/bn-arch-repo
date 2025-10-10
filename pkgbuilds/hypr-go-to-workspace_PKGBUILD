@@ -1,7 +1,7 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=hypr-go-to-workspace-git
 _pkgname=${pkgname%-git}
-pkgver=r3.dcea013
+pkgver=r4.ee3d1a9
 pkgrel=1
 pkgdesc="a Rust CLI tool that generates 16-step color gradients from a hex base using HLS"
 arch=('x86_64')
