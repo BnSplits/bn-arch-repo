@@ -31,6 +31,7 @@ You can now install packages directly from this repository using `pacman`.
 - [chromapick](https://github.com/BnSplits/chromapick)
 - [hypr-go-to-workspace](https://github.com/BnSplits/hypr-go-to-workspace)
 - [hypr-move-to-workspace](https://github.com/BnSplits/hypr-move-to-workspace)
+- packettracer-bn (PKGBUILD only)
 
 ---
 
