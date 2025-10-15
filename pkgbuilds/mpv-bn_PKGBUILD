@@ -2,7 +2,7 @@
 pkgname=mpv-bn-git
 _pkgname=mpv-bn
 pkgver=0.40.0
-pkgrel=14
+pkgrel=15
 pkgdesc='a free, open source, and cross-platform media player'
 arch=('x86_64')
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
