@@ -1,3 +1,14 @@
+# Ignore all files and folders inside sources/
 sources/*
+# But keep the placeholder file so the folder exists in Git
 !sources/.gitkeep
+
+# Ignore all files matching packettracer-bn* inside x86_64/
 x86_64/packettracer-bn*
+
+# Ignore everything inside pkgbuilds/
+pkgbuilds/**
+# Allow folder structure inside pkgbuilds/ so PKGBUILD files can be tracked
+!pkgbuilds/**/
+# But do not ignore any file named PKGBUILD in subdirectories
+!pkgbuilds/**/PKGBUILD

@@ -1,0 +1,85 @@
+# Maintainer: BnSplits <bnsp.x0@gmail.com>
+
+pkgname=packettracer-bn
+pkgver=8.2.2
+pkgrel=2
+pkgdesc="A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network"
+arch=('x86_64')
+depends=('openssl>=1.0' 'dbus' 'icu' 'glib2' 'libxml2-legacy' 'libjpeg-turbo' 'nss' 'libxss' 'java-runtime>=1.7.0' 'qt5-multimedia' 'qt5-webengine' 'qt5-svg' 'qt5-networkauth' 'qt5-websockets' 'qt5-script' 'qt5-speech')
+options=('!strip' '!emptydirs')
+url="https://www.netacad.com/courses/packet-tracer"
+license=('LicenseRef-Cisco-EULA')
+conflicts=("packettracer")
+source=('https://archive.org/download/cpt822/CiscoPacketTracer822_amd64_signed.deb')
+sha512sums=('55835357b01449150f5c962d852f2921d4e39f697297cb34471b8cc83a91bced6c31703cc28a90e61db7a9a32e5534de4f11e5c4f6735f400456d25a013fadde')
+
+package() {
+  mv "${srcdir}/CiscoPacketTracer822_amd64_signed.deb" "Packet_Tracer822_amd64_signed.deb"
+  tar xf data.tar.xz -C "${pkgdir}"
+  chown -R 0:0 "${pkgdir}"
+  mkdir -p "${pkgdir}/usr/lib/"
+  mv "${pkgdir}/opt/pt/" "${pkgdir}/usr/lib/packettracer/"
+  mkdir -p "${pkgdir}/usr/share/applications/"
+
+  # Create cisco-pt.desktop
+  cat >"${pkgdir}/usr/share/applications/cisco-pt.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Exec=/usr/lib/packettracer/packettracer %f
+Name=Packet Tracer 8.2.2
+Icon=/usr/lib/packettracer/art/app.png
+Terminal=false
+StartupNotify=true
+MimeType=application/x-pkt;application/x-pka;application/x-pkz;application/x-pks;application/x-pksz;
+Categories=Network;
+EOF
+
+  # Create cisco-ptsa.desktop
+  cat >"${pkgdir}/usr/share/applications/cisco-ptsa.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Exec=/usr/lib/packettracer/packettracer -uri=%u
+Name=Packet Tracer 8.2.2
+Icon=/usr/lib/packettracer/art/app.png
+Terminal=false
+StartupNotify=true
+NoDisplay=true
+MimeType=x-scheme-handler/pttp;
+Categories=Network;
+EOF
+
+  chmod a+x "${pkgdir}/usr/share/applications/cisco-pt.desktop"
+  chmod a+x "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
+  mkdir -p "${pkgdir}/usr/bin/"
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/usr/lib/packettracer/help/" -type d -exec chmod 777 {} \;
+  find "${pkgdir}/usr/lib/packettracer/saves/" -type d -exec chmod 555 {} \;
+  find "${pkgdir}/usr/lib/packettracer/art/html/network_controller/" -type d -exec chmod 775 {} \;
+  find "${pkgdir}/usr/lib/packettracer/art/RackView/CablePegboard/" -type d -exec chmod 775 {} \;
+  find "${pkgdir}/usr/lib/packettracer/bin/xcbglintegrations/" -type d -exec chmod 775 {} \;
+  find "${pkgdir}/usr/lib/packettracer/help/default/NetconRestAPI/" -type d -exec chmod 775 {} \;
+
+  ln -s /usr/lib/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
+  ln -s /usr/lib/lib/libdouble-conversion.so "${pkgdir}/usr/lib/packettracer/bin/libdouble-conversion.so.1"
+  sed -i 's|/opt/pt|/usr/lib/packettracer|' "${pkgdir}/usr/lib/packettracer/linguist" "${pkgdir}/usr/lib/packettracer/packettracer"
+
+  # Create packettracer.sh
+  mkdir -p "${pkgdir}/etc/profile.d"
+  cat >"${pkgdir}/etc/profile.d/packettracer.sh" <<'EOF'
+PT8HOME=/usr/lib/packettracer/
+export PT8HOME
+version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
+QT_VERSION=$(qmake -v | grep "Using Qt version" | sed -r 's/.* ([0-9]+\.*[0-9]+\.*[0-9]*).*?/\1/')
+QT_VERSION_CHECK="5.5.0"
+if version_gt $QT_VERSION $QT_VERSION_CHECK;then
+QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_AUTO_SCREEN_SCALE_FACTOR
+else
+QT_DEVICE_PIXEL_RATIO=auto
+export QT_DEVICE_PIXEL_RATIO
+fi
+EOF
+  chmod 755 "${pkgdir}/etc/profile.d/packettracer.sh"
+
+  install -D -m644 "${pkgdir}/usr/lib/packettracer/help/default/copyrights.htm" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+}
