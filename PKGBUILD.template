@@ -7,6 +7,7 @@ pkgdesc="a Rust CLI tool that generates 16-step color gradients from a hex base 
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
 license=('GPL')
+depends=()
 makedepends=('git' 'rustup')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
