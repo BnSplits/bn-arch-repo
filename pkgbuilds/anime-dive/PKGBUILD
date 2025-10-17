@@ -1,7 +1,7 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=anime-dive-git
 _pkgname=${pkgname%-git}
-pkgver=r44.205f930
+pkgver=r46.891d1bd
 pkgrel=1
 pkgdesc="An anime / scans searcher, selector and downloader program for French anime fans"
 arch=('x86_64')
