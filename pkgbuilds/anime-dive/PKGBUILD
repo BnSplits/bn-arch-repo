@@ -8,8 +8,8 @@ pkgdesc="An anime / scans searcher, selector and downloader program for French a
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
 license=('GPL')
-depends=('nodejs')
-makedepends=('git' 'gcc' 'npm')
+depends=('nodejs' 'npm')
+makedepends=('git' 'gcc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/BnSplits/${_pkgname}.git")
@@ -27,12 +27,6 @@ build() {
   find . -maxdepth 1 -mindepth 1 ! -name "src" -print0 | xargs -0 rm -rf
   mv src/* ./
   rmdir src
-
-  # Install npm dependencies
-  npm install --production
-
-  # Install puppeteer browser
-  npx puppeteer browsers install chrome
 
   # Create the C wrapper
   cat >anime-dive.c <<'EOF'
@@ -55,6 +49,12 @@ package() {
   # Install application files
   mkdir -p "$pkgdir/opt/${_pkgname}"
   cp -r ./* "$pkgdir/opt/${_pkgname}/"
+
+  # Install npm dependencies
+  npm install --production
+
+  # Install puppeteer browser
+  npx puppeteer browsers install chrome
 
   # Install the binary wrapper
   install -Dm755 anime-dive "$pkgdir/usr/bin/anime-dive"
