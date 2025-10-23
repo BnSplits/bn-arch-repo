@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
 license=('GPL')
 depends=('nodejs')
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'npm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/BnSplits/${_pkgname}.git")
@@ -30,6 +30,9 @@ build() {
 
   # Install npm dependencies
   npm install --production
+
+  # Install puppeteer browser
+  npx puppeteer browsers install chrome
 
   # Create the C wrapper
   cat >anime-dive.c <<'EOF'
