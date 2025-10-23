@@ -28,8 +28,8 @@ build() {
   mv src/* ./
   rmdir src
 
-  # Install npm dependencies here in build directory
-  npm install --production
+  # Install npm dependencies
+  npm install --omit=dev
 
   # Create the C wrapper
   cat >anime-dive.c <<'EOF'
