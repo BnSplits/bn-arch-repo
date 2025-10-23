@@ -31,9 +31,6 @@ build() {
   # Install npm dependencies here in build directory
   npm install --production
 
-  # Install puppeteer browser
-  npx puppeteer browsers install chrome
-
   # Create the C wrapper
   cat >anime-dive.c <<'EOF'
 #include <unistd.h>
@@ -54,6 +51,9 @@ package() {
   # Install application files (including node_modules from build)
   mkdir -p "$pkgdir/opt/${_pkgname}"
   cp -r ./* "$pkgdir/opt/${_pkgname}/"
+
+  # Install puppeteer browser
+  npx puppeteer browsers install chrome
 
   # Install the binary wrapper
   install -Dm755 anime-dive "$pkgdir/usr/bin/anime-dive"
