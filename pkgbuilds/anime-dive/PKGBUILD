@@ -3,13 +3,13 @@
 pkgname=anime-dive-git
 _pkgname=${pkgname%-git}
 pkgver=r47.4747da5
-pkgrel=1
+pkgrel=2
 pkgdesc="An anime / scans searcher, selector and downloader program for French anime fans"
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
 license=('GPL')
-depends=('nodejs' 'npm' 'chromium')
-makedepends=('git' 'gcc')
+depends=('nodejs' 'chromium')
+makedepends=('git' 'gcc' 'npm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/BnSplits/${_pkgname}.git")
