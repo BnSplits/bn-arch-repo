@@ -32,6 +32,7 @@ You can now install packages directly from this repository using `pacman`.
 - [hypr-go-to-workspace](https://github.com/BnSplits/hypr-go-to-workspace)
 - [hypr-move-to-workspace](https://github.com/BnSplits/hypr-move-to-workspace)
 - [anime-dive](https://github.com/BnSplits/anime-dive)
+- [n-m3u8dl-re-bin-bn](https://github.com/nilaoda/N_m3u8DL-RE)
 - packettracer-bn (PKGBUILD only)
 
 ---
