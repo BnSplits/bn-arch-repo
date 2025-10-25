@@ -2,13 +2,13 @@
 
 pkgname=anime-dive-git
 _pkgname=${pkgname%-git}
-pkgver=r47.4747da5
-pkgrel=2
+pkgver=r58.0f2d1b7
+pkgrel=1
 pkgdesc="An anime / scans searcher, selector and downloader program for French anime fans"
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
 license=('GPL')
-depends=('nodejs' 'chromium' 'aria2' 'youtube-dl-nightly' 'n-m3u8dl-re-bin-bn')
+depends=('nodejs' 'chromium' 'aria2' 'n-m3u8dl-re-bin-bn')
 makedepends=('git' 'gcc' 'npm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -22,11 +22,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-
-  # Reorganize directory structure
-  find . -maxdepth 1 -mindepth 1 ! -name "src" -print0 | xargs -0 rm -rf
-  mv src/* ./
-  rmdir src
 
   # Install npm dependencies
   npm install --omit=dev
