@@ -2,7 +2,7 @@
 
 pkgname=anime-dive-git
 _pkgname=${pkgname%-git}
-pkgver=r58.0f2d1b7
+pkgver=r59.8b5d0ae
 pkgrel=1
 pkgdesc="An anime / scans searcher, selector and downloader program for French anime fans"
 arch=('x86_64')
