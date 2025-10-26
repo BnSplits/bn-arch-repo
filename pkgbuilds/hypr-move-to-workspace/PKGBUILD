@@ -26,5 +26,5 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-  ln -s "${_pkgname}" "$pkgdir/usr/bin/hgtw"
+  ln -s "${_pkgname}" "$pkgdir/usr/bin/hmtw"
 }
