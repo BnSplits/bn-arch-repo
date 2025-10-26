@@ -1,7 +1,7 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=hypr-go-to-workspace-git
 _pkgname=${pkgname%-git}
-pkgver=r4.ee3d1a9
+pkgver=r5.82ff9f5
 pkgrel=1
 pkgdesc="a Rust CLI tool that generates 16-step color gradients from a hex base using HLS"
 arch=('x86_64')
@@ -26,4 +26,5 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+  ln -s "${_pkgname}" "$pkgdir/usr/bin/hgtw"
 }
