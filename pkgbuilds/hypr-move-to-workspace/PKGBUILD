@@ -1,8 +1,8 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=hypr-move-to-workspace-git
 _pkgname=${pkgname%-git}
-pkgver=r12.be91b8c
-pkgrel=3
+pkgver=r13.f5944ee
+pkgrel=1
 pkgdesc="A Hyprland utility to move windows between workspaces with optional silent mode"
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
