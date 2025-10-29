@@ -2,7 +2,7 @@
 pkgname=hypr-move-to-workspace-git
 _pkgname=${pkgname%-git}
 pkgver=r12.be91b8c
-pkgrel=2
+pkgrel=3
 pkgdesc="A Hyprland utility to move windows between workspaces with optional silent mode"
 arch=('x86_64')
 url="https://github.com/BnSplits/${_pkgname}"
