@@ -1,7 +1,7 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=hypr-go-to-workspace-git
 _pkgname=${pkgname%-git}
-pkgver=r13.1fe2f99
+pkgver=r14.0f36709
 pkgrel=1
 pkgdesc="A Hyprland workspace switcher with smart navigation and window focusing capabilities"
 arch=('x86_64')
