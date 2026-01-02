@@ -1,8 +1,8 @@
 # Maintainer: BnSplits <bnsp.x0@gmail.com>
 pkgname=mpv-bn-git
 _pkgname=mpv-bn
-pkgver=0.40.0
-pkgrel=15
+pkgver=0.41.0
+pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=('x86_64')
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
@@ -20,7 +20,7 @@ optdepends=('yt-dlp: for video-sharing websites playback')
 provides=("mpv=${pkgver}" "mpv-git" "libmpv.so")
 options=('!emptydirs' '!debug')
 source=("git+https://github.com/BnSplits/${_pkgname}.git#tag=v${pkgver}")
-sha256sums=('a56452e47928e39f2ae1bd65b0455293164032289e769748597e68a3c7a0445e')
+sha256sums=('4d0f93580e40cfbe1fc156ede99cdc762b40ed0148dad9bfc19908c4b6d7bb57')
 conflicts=("mpv" "mpv-git")
 replaces=("mpv" "mpv-git")
 
